@@ -20,7 +20,9 @@ namespace NSE.WebApp.MVC.Extensions
         {
             try
             {
+                Console.WriteLine("request _next");
                 await _next(httpContext);
+                Console.WriteLine("respose _next");
             }
             catch (CustomHttpRequestException ex)
             {
@@ -30,13 +32,16 @@ namespace NSE.WebApp.MVC.Extensions
 
         private static void HandleRequestExceptionAsync(HttpContext context, CustomHttpRequestException httpRequestException)
         {
-            if (httpRequestException.StatusCode == HttpStatusCode.Unauthorized)
-            {
-                context.Response.Redirect($"/login?ReturnUrl={context.Request.Path}");
-                return;
-            }
 
-            context.Response.StatusCode = (int)httpRequestException.StatusCode;
+            switch (httpRequestException.StatusCode)
+            {
+                case HttpStatusCode.Unauthorized: 
+                    context.Response.Redirect($"/login?ReturnUrl={context.Request.Path}");
+                    break;
+                default:
+                     context.Response.StatusCode = (int)httpRequestException.StatusCode;
+                    break;
+            }
         }
     }
 }

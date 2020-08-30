@@ -13,7 +13,7 @@ namespace NSE.Identidade.API.Configuration
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "NerdStore Enterprise Identity API",
+                    Title = "Identity API",
                     Description = "Prjeto Identity",
                     Contact = new OpenApiContact { Name = "Rafael", Email = "teste@gmail.com" },
                     License = new OpenApiLicense { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
