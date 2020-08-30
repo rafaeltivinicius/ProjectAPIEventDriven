@@ -10,11 +10,10 @@ namespace NSE.WebApp.MVC.Configuration
     {
         public static void RegisterServices(this IServiceCollection services)
         {
-            //ignorando o certificado da maquina
             services.AddHttpClient<IAutenticacaoService, AutenticacaoService>()
                 .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
                 {
-                    ClientCertificateOptions = ClientCertificateOption.Manual,
+                    ClientCertificateOptions = ClientCertificateOption.Manual, //ignorando o certificado da maquina
                     ServerCertificateCustomValidationCallback =
                         (httpRequestMessage, cert, cetChain, policyErrors) =>
                         {
@@ -22,7 +21,6 @@ namespace NSE.WebApp.MVC.Configuration
                         }
                 });
 
-            //services.AddHttpClient<IAutenticacaoService, AutenticacaoService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUser, AspNetUser>();
         }

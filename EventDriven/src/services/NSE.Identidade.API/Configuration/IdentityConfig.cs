@@ -24,13 +24,11 @@ namespace NSE.Identidade.API.Configuration
                     .AddEntityFrameworkStores<ApplicationDBContext>() // o banco que criamos o Identity
                     .AddDefaultTokenProviders(); // não tem nada haver com JWT. é o token dele para resetar senha, autenticar conta recem criada
                                                  // praticamente uma criptografia dentro de um token para te reconhecer
+           
+            var appSettingsSection = configuration.GetSection("AppSettings"); //obtendo pela chave
+            services.Configure<AppSettings>(appSettingsSection); //mapeando
 
-
-            // Configuração JWT
-            var appSettingsSection = configuration.GetSection("AppSettings");
-            services.Configure<AppSettings>(appSettingsSection);
-
-            var appSettings = appSettingsSection.Get<AppSettings>();
+            var appSettings = appSettingsSection.Get<AppSettings>(); //obtendo
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
             services.AddAuthentication(option =>
