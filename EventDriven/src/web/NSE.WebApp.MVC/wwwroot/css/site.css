@@ -71,8 +71,8 @@ body {
 }
 
 input,
-section,
+select,
 file,
-textarea{
-    max-width:400px;
+textarea {
+    max-width: 400px;
 }
