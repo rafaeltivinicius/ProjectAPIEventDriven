@@ -21,6 +21,17 @@ namespace NSE.WebApp.MVC.Configuration
                         }
                 });
 
+            services.AddHttpClient<ICatalogoService, CatalogoService>()
+                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+                {
+                    ClientCertificateOptions = ClientCertificateOption.Manual, //ignorando o certificado da maquina
+                    ServerCertificateCustomValidationCallback =
+                        (httpRequestMessage, cert, cetChain, policyErrors) =>
+                        {
+                            return true;
+                        }
+                });
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUser, AspNetUser>();
         }
