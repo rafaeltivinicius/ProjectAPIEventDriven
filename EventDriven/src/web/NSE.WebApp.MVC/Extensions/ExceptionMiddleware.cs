@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -35,11 +33,11 @@ namespace NSE.WebApp.MVC.Extensions
 
             switch (httpRequestException.StatusCode)
             {
-                case HttpStatusCode.Unauthorized: 
+                case HttpStatusCode.Unauthorized:
                     context.Response.Redirect($"/login?ReturnUrl={context.Request.Path}");
                     break;
                 default:
-                     context.Response.StatusCode = (int)httpRequestException.StatusCode;
+                    context.Response.StatusCode = (int)httpRequestException.StatusCode;
                     break;
             }
         }

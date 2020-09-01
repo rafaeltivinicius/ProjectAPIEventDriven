@@ -56,6 +56,10 @@ namespace NSE.WebApp.MVC.Controllers
         [Route("login")]
         public async Task<IActionResult> Login(UsuarioLogin usuarioLogin, string returnUrl = null)
         {
+            var ip = this.ObterIP();
+
+            var ip2 = this.ObterIPV2();
+
             ViewData["ReturnUrl"] = returnUrl;
             if (!ModelState.IsValid) return View(usuarioLogin);
 
@@ -80,10 +84,10 @@ namespace NSE.WebApp.MVC.Controllers
 
         private async Task RealizarLogin(UsuarioRespostaLogin resposta)
         {
-            var token = ObterTokenFormatado(resposta.AcessToken);
+            var token = ObterTokenFormatado(resposta.AccessToken);
 
             var claims = new List<Claim>();
-            claims.Add(new Claim("JWT", resposta.AcessToken));
+            claims.Add(new Claim("JWT", resposta.AccessToken));
             claims.AddRange(token.Claims);
 
             // gera claims detro do cookie

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NSE.WebApp.MVC.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace NSE.WebApp.MVC.Controllers
@@ -28,7 +26,7 @@ namespace NSE.WebApp.MVC.Controllers
 
         [HttpGet]
         [Route("produto-detalhe/{id}")]
-        public async Task<IActionResult> Index(Guid id)
+        public async Task<IActionResult> ProdutoDetalhe(Guid id)
         {
             var produtos = await _catalogoService.ObterPorId(id);
 
