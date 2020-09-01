@@ -33,8 +33,8 @@ namespace NSE.WebAPI.Core.Identidade
                     IssuerSigningKey = new SymmetricSecurityKey(key), //aqui vem a chave, como vou embaralhar os dados dentro do token
                     ValidateIssuer = true, //valida dentro da api que eu quiser, não aceito um token emitido de outro emissor
                     ValidateAudience = true, //onde vai ser valido, em quais dominios q ele é valido
+                    ValidAudience = appSettings.ValidoEm, // onde esse token vai ser valido
                     ValidIssuer = appSettings.Emissor, // emissor do token que é essa api
-                    ValidAudience = appSettings.ValidoEm // onde esse token vai ser valido
                 };
             });
         }

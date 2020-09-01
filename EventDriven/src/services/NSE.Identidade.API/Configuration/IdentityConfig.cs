@@ -14,7 +14,6 @@ namespace NSE.Identidade.API.Configuration
         public static void AddIdentityConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             // Identity
-
             services.AddDbContext<ApplicationDBContext>(options =>
               options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
@@ -25,13 +24,13 @@ namespace NSE.Identidade.API.Configuration
                     .AddDefaultTokenProviders(); // não tem nada haver com JWT. é o token dele para resetar senha, autenticar conta recem criada
                                                  // praticamente uma criptografia dentro de um token para te reconhecer
 
-
             services.AddJwtConfiguration(configuration);
         }
 
-        public static void UseIdentityConfiguration(this IApplicationBuilder app)
-        {
-            app.UseJwtConfiguration();
-        }
+
+        //public static void UseIdentityConfiguration(this IApplicationBuilder app)
+        //{
+        //    app.UseJwtConfiguration();
+        //}
     }
 }

@@ -10,15 +10,13 @@ namespace NSE.Core.DomainObjects
         {
             var compareTo = obj as Entity;
 
-            if (ReferenceEquals(this, compareTo))
-                return true;
-            if (ReferenceEquals(null, compareTo))
-                return false;
+            if (ReferenceEquals(this, compareTo)) return true;
+            if (ReferenceEquals(null, compareTo)) return false;
 
             return Id.Equals(compareTo.Id);
         }
 
-        public static bool operator == (Entity a, Entity b)
+        public static bool operator ==(Entity a, Entity b)
         {
             if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
                 return true;
@@ -29,7 +27,7 @@ namespace NSE.Core.DomainObjects
             return a.Equals(b);
         }
 
-        public static bool operator != (Entity a, Entity b)
+        public static bool operator !=(Entity a, Entity b)
         {
             return !(a == b);
         }
@@ -41,7 +39,7 @@ namespace NSE.Core.DomainObjects
 
         public override string ToString()
         {
-            return $"{GetType().Name} [id={Id}]";
+            return $"{GetType().Name} [Id={Id}]";
         }
     }
 }

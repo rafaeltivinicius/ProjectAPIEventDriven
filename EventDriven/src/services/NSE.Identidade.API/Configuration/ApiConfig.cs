@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting; // importa o env
+using NSE.WebAPI.Core.Identidade;
 
 namespace NSE.Identidade.API.Configuration
 {
@@ -24,7 +25,7 @@ namespace NSE.Identidade.API.Configuration
             app.UseRouting();
 
             //Identity precisa esta entre o Routing e o UseEndpoints
-            app.UseIdentityConfiguration();
+            app.UseJwtConfiguration();
 
             app.UseEndpoints(endpoints =>
             {
