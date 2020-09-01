@@ -41,8 +41,8 @@ namespace NSE.WebAPI.Core.Identidade
 
         public static void UseJwtConfiguration(this IApplicationBuilder app)
         {
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
         }
     }
 }
