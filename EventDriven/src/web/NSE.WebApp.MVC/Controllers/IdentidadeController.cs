@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using NSE.WebApp.MVC.Extensions;
 using NSE.WebApp.MVC.Models;
 using NSE.WebApp.MVC.Services;
 using System;
@@ -15,10 +16,12 @@ namespace NSE.WebApp.MVC.Controllers
     {
 
         private readonly IAutenticacaoService _autenticacaoService;
+        private readonly IUser _user;
 
-        public IdentidadeController(IAutenticacaoService autenticacaoService)
+        public IdentidadeController(IAutenticacaoService autenticacaoService, IUser user)
         {
             _autenticacaoService = autenticacaoService;
+            _user = user;
         }
 
         [HttpGet]
@@ -56,9 +59,7 @@ namespace NSE.WebApp.MVC.Controllers
         [Route("login")]
         public async Task<IActionResult> Login(UsuarioLogin usuarioLogin, string returnUrl = null)
         {
-            var ip = this.ObterIP();
-
-            var ip2 = this.ObterIPV2();
+            var ipAdress = this.ObterIPV2();
 
             ViewData["ReturnUrl"] = returnUrl;
             if (!ModelState.IsValid) return View(usuarioLogin);
