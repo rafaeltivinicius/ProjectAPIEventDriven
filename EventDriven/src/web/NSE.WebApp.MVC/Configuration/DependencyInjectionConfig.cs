@@ -9,6 +9,10 @@ using Polly.Extensions.Http;
 using Polly.Retry;
 using System;
 using System.Net.Http;
+using System.Net.Security;
+using System.Reflection;
+using System.Security.Authentication;
+using System.Security.Cryptography.X509Certificates;
 
 namespace NSE.WebApp.MVC.Configuration
 {
@@ -27,13 +31,16 @@ namespace NSE.WebApp.MVC.Configuration
 
             services.AddHttpClient<ICatalogoService, CatalogoService>()
                 .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()//Delegate - Intercepta qualquer request q vem Desse serviço
-                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler //erro de certificado
-                {
-                    ServerCertificateCustomValidationCallback = delegate { return true; }
-                })
                  //.AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromSeconds(1))); //policy
                 .AddPolicyHandler(PollyExtensions.EsperarTentar()) //Policy de tentativa caso ocorra falhas de rede 
-                .AddTransientHttpErrorPolicy(p => p.CircuitBreakerAsync(5, TimeSpan.FromSeconds(60)));// o CircuitBreaker conta a requisição como um todo da aplicação (nao é por usuario) 
+                .AddTransientHttpErrorPolicy(p => p.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)))// o CircuitBreaker conta a requisição como um todo da aplicação (nao é por usuario) 
+                .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler //erro de certificado
+                {
+                    ServerCertificateCustomValidationCallback = (message, cert, chain, sslPolicyErrors) =>
+                    {
+                        return true;
+                    }
+                });
 
             #region example Refit
 
