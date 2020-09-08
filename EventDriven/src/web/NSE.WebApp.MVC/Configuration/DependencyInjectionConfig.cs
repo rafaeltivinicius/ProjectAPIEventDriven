@@ -23,7 +23,7 @@ namespace NSE.WebApp.MVC.Configuration
 
             services.AddHttpClient<ICatalogoService, CatalogoService>()
                 .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()//Delegate - Intercepta qualquer request q vem Desse serviço
-                                                                                  //.AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromSeconds(1))); //policy
+                //.AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromSeconds(1))); //policy
                 .AddPolicyHandler(PollyExtensions.EsperarTentar()) //Policy de tentativa caso ocorra falhas de rede 
                 .AddTransientHttpErrorPolicy(p => p.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));// o CircuitBreaker conta a requisição como um todo da aplicação (nao é por usuario) 
 

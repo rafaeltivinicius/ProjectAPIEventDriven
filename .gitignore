@@ -52,6 +52,7 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
+**/Properties/launchSettings.json
 
 # StyleCop
 StyleCopReport.xml
@@ -242,7 +243,9 @@ ServiceFabricBackup/
 *.rptproj.bak
 
 # SQL Server files
-
+*.mdf
+*.ldf
+*.ndf
 
 # Business Intelligence projects
 *.rdl.data
