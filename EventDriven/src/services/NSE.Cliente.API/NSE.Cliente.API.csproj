@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.3">
@@ -23,7 +24,6 @@
   <ItemGroup>
     <Folder Include="Application\Events\" />
     <Folder Include="Application\Queries\" />
-    <Folder Include="Data\Repository\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
