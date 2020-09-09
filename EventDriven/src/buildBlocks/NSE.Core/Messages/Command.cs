@@ -4,6 +4,7 @@ using System;
 
 namespace NSE.Core.Messages
 {
+    //alterão estado de uma entidade, representa uma intensão de alteração de estatus
     public abstract class Command : Message, IRequest<ValidationResult>
     {
         public DateTime Timestamp { get; private set; }

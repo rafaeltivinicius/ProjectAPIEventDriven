@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace NSE.Cliente.API.Models
+namespace NSE.Clientes.API.Models
 {
     public interface IClienteRepository : IRepository<Cliente>
     {

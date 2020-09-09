@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NSE.Cliente.API.Data;
+using NSE.Clientes.API.Data;
 using NSE.WebAPI.Core.Identidade;
 using Microsoft.Extensions.Hosting;
 
-namespace NSE.Cliente.API.Configuration
+namespace NSE.Clientes.API.Configuration
 {
     public static class ApiConfig
     {

@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NSE.Cliente.API.Models;
+using NSE.Clientes.API.Models;
 using NSE.Core.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NSE.Cliente.API.Data
+namespace NSE.Clientes.API.Data
 {
     public class ClientesContext : DbContext, IUnitOfWork
     {
@@ -15,7 +15,7 @@ namespace NSE.Cliente.API.Data
             ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
-        public DbSet<Models.Cliente> Clientes { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

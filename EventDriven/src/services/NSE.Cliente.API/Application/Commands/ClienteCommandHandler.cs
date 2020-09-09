@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Results;
 using MediatR;
-using NSE.Cliente.API.Models;
+using NSE.Clientes.API.Models;
 using NSE.Core.Messages;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace NSE.Cliente.API.Application.Commands
+namespace NSE.Clientes.API.Application.Commands
 {
     //Manipulador do commando
     public class ClienteCommandHandler : CommandHandler, IRequestHandler<RegistrarClienteCommand, ValidationResult>
@@ -22,7 +22,7 @@ namespace NSE.Cliente.API.Application.Commands
             if (!message.EhValido())
                 return message.ValidationResult;
 
-            var cliente = new Models.Cliente(message.Id, message.Nome, message.Email, message.Cpf);
+            var cliente = new Cliente(message.Id, message.Nome, message.Email, message.Cpf);
 
             //Validações de negocio
             var clienteExistente = await _clienteRepository.ObterPorCpf(cliente.Cpf.Numero);

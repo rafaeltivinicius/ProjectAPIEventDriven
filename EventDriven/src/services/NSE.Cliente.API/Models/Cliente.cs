@@ -1,7 +1,7 @@
 ﻿using NSE.Core.DomainObjects;
 using System;
 
-namespace NSE.Cliente.API.Models
+namespace NSE.Clientes.API.Models
 {
     //classe mãe de outras entidades e de objetos de valores q estão ligados a ela
     public class Cliente : Entity, IAggregateRoot

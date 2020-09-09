@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NSE.Cliente.API.Data;
+using NSE.Clientes.API.Data;
 
-namespace NSE.Cliente.API.Migrations
+namespace NSE.Clientes.API.Migrations
 {
     [DbContext(typeof(ClientesContext))]
     partial class ClientesContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace NSE.Cliente.API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("NSE.Cliente.API.Models.Cliente", b =>
+            modelBuilder.Entity("NSE.Clientes.API.Models.Cliente", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,7 +37,7 @@ namespace NSE.Cliente.API.Migrations
                     b.ToTable("Clientes");
                 });
 
-            modelBuilder.Entity("NSE.Cliente.API.Models.Endereco", b =>
+            modelBuilder.Entity("NSE.Clientes.API.Models.Endereco", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -81,7 +81,7 @@ namespace NSE.Cliente.API.Migrations
                     b.ToTable("Enderecos");
                 });
 
-            modelBuilder.Entity("NSE.Cliente.API.Models.Cliente", b =>
+            modelBuilder.Entity("NSE.Clientes.API.Models.Cliente", b =>
                 {
                     b.OwnsOne("NSE.Core.DomainObjects.Cpf", "Cpf", b1 =>
                         {
@@ -121,11 +121,11 @@ namespace NSE.Cliente.API.Migrations
                         });
                 });
 
-            modelBuilder.Entity("NSE.Cliente.API.Models.Endereco", b =>
+            modelBuilder.Entity("NSE.Clientes.API.Models.Endereco", b =>
                 {
-                    b.HasOne("NSE.Cliente.API.Models.Cliente", "Cliente")
+                    b.HasOne("NSE.Clientes.API.Models.Cliente", "Cliente")
                         .WithOne("Endereco")
-                        .HasForeignKey("NSE.Cliente.API.Models.Endereco", "ClienteId")
+                        .HasForeignKey("NSE.Clientes.API.Models.Endereco", "ClienteId")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

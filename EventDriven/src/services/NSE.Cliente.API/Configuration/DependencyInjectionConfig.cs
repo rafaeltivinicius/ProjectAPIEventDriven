@@ -1,13 +1,13 @@
 ﻿using FluentValidation.Results;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using NSE.Cliente.API.Application.Commands;
-using NSE.Cliente.API.Data;
-using NSE.Cliente.API.Data.Repository;
-using NSE.Cliente.API.Models;
+using NSE.Clientes.API.Application.Commands;
+using NSE.Clientes.API.Data;
+using NSE.Clientes.API.Data.Repository;
+using NSE.Clientes.API.Models;
 using NSE.Core.Mediator;
 
-namespace NSE.Cliente.API.Configuration
+namespace NSE.Clientes.API.Configuration
 {
     public static class DependencyInjectionConfig
     {

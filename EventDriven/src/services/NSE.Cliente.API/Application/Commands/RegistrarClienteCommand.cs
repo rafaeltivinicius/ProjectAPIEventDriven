@@ -2,7 +2,7 @@
 using NSE.Core.Messages;
 using System;
 
-namespace NSE.Cliente.API.Application.Commands
+namespace NSE.Clientes.API.Application.Commands
 {
     // Command representa uma intensão de alteração no estado da entidade (insert, update, delete)
     public class RegistrarClienteCommand : Command
