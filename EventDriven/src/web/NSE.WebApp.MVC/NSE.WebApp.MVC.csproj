@@ -21,4 +21,8 @@
     <Folder Include="Views\View\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\buildBlocks\NSE.Core\NSE.Core.csproj" />
+  </ItemGroup>
+
 </Project>

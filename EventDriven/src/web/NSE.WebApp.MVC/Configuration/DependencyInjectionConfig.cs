@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NSE.WebApp.MVC.Extensions;
@@ -16,6 +17,8 @@ namespace NSE.WebApp.MVC.Configuration
     {
         public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddSingleton<IValidationAttributeAdapterProvider,CpfValidationAttributeAdapterProvider>();
+
             //Registro Delegate
             services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 
@@ -26,7 +29,6 @@ namespace NSE.WebApp.MVC.Configuration
                 //.AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromSeconds(1))); //policy
                 .AddPolicyHandler(PollyExtensions.EsperarTentar()) //Policy de tentativa caso ocorra falhas de rede 
                 .AddTransientHttpErrorPolicy(p => p.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));// o CircuitBreaker conta a requisição como um todo da aplicação (nao é por usuario) 
-
 
             #region example Refit
 
