@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\buildBlocks\NSE.Core\NSE.Core.csproj" />
-    <ProjectReference Include="..\NSE.Catalogo.API\NSE.Catalogo.API.csproj" />
+    <ProjectReference Include="..\..\buildBlocks\NSE.WebAPI.Core\NSE.WebAPI.Core.csproj" />
   </ItemGroup>
 
 

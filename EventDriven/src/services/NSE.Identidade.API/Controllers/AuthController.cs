@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using NSE.Identidade.API.Extensions;
 using NSE.Identidade.API.Models;
+using NSE.WebAPI.Core.Controllers;
 using NSE.WebAPI.Core.Identidade;
 using System;
 using System.Collections.Generic;
@@ -32,7 +32,7 @@ namespace NSE.Identidade.API.Controllers
         [HttpPost("nova-conta")]
         public async Task<IActionResult> Registrar(UsuarioRegistro usuarioRegistro)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
                 return CustomResponse(ModelState);
 
             var user = new IdentityUser
@@ -63,7 +63,8 @@ namespace NSE.Identidade.API.Controllers
             if (result.Succeeded)
                 return CustomResponse(await GerarJwt(usuarioLogin.Email));
 
-            if (result.IsLockedOut) { 
+            if (result.IsLockedOut)
+            {
                 AdicionarErroProcessamento("usuario temporariamente bloqueado");
                 return CustomResponse();
             }
@@ -118,12 +119,12 @@ namespace NSE.Identidade.API.Controllers
             });
 
             //token criptografado com base na sua chave
-           return tokenHandler.WriteToken(token);
+            return tokenHandler.WriteToken(token);
         }
 
         private UsuarioRespostaLogin ObterRespostaToken(string encodedToken, IdentityUser user, IEnumerable<Claim> claims)
         {
-            return  new UsuarioRespostaLogin
+            return new UsuarioRespostaLogin
             {
                 AccessToken = encodedToken,
                 ExpiresIn = TimeSpan.FromHours(_appSettings.ExpiracaoHoras).TotalSeconds,
