@@ -5,7 +5,7 @@ using System;
 namespace NSE.Core.Messages
 {
     //alterão estado de uma entidade, representa uma intensão de alteração de estatus
-    public abstract class Command : Message, IRequest<ValidationResult>
+    public abstract class Command : Message, IRequest<ValidationResult> //interface de marcação
     {
         public DateTime Timestamp { get; private set; }
         public ValidationResult ValidationResult { get; set; } //classe para objetos de validação
