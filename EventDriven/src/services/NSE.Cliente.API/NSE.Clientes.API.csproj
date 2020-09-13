@@ -23,11 +23,11 @@
 
   <ItemGroup>
     <Folder Include="Application\Queries\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\buildBlocks\NSE.Core\NSE.Core.csproj" />
+    <ProjectReference Include="..\..\buildBlocks\NSE.MessageBus\NSE.MessageBus.csproj" />
     <ProjectReference Include="..\..\buildBlocks\NSE.WebAPI.Core\NSE.WebAPI.Core.csproj" />
   </ItemGroup>
 
